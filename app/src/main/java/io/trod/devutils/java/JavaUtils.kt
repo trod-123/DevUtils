@@ -32,10 +32,10 @@ object JavaUtils {
     }
 
     /**
-     * Returns a random Object from a list
+     * Returns a random Object from a collection
      */
     @JvmStatic
-    fun getRandomObjectFromList(objects: List<Any>): Any {
+    fun getRandomObjectFromCollection(objects: Collection<Any>): Any {
         return objects.random()
     }
 }
