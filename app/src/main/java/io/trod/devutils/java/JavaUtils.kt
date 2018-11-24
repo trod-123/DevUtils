@@ -16,8 +16,6 @@
 
 package io.trod.devutils.java
 
-import java.util.*
-
 /**
  * General utils that do not rely on the Android framework
  */
@@ -30,6 +28,14 @@ object JavaUtils {
      */
     @JvmStatic
     fun getRandomObjectFromArray(objects: Array<Any>): Any {
-        return objects[Random().nextInt(objects.size)]
+        return objects.random()
+    }
+
+    /**
+     * Returns a random Object from a list
+     */
+    @JvmStatic
+    fun getRandomObjectFromList(objects: List<Any>): Any {
+        return objects.random()
     }
 }
