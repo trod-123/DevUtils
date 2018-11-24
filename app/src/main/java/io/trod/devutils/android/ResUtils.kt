@@ -33,6 +33,7 @@ object ResUtils {
      * @param resId of the float resource to fetch
      * @return [Float] value fetched from [Resources]
      */
+    @JvmStatic
     fun getFloatFromResources(resources: Resources, resId: Int): Float {
         val outValue = TypedValue()
         resources.getValue(resId, outValue, true)

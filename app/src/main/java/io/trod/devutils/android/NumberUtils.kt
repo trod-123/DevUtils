@@ -71,6 +71,7 @@ object NumberUtils {
      * @param input Number written out in English
      * @return [String] expressing the number written out in the decimal numeral system
      */
+    @JvmStatic
     fun convertEnglishWordsToDecimal(input: String): String {
         var result = ""
         val decimal = input.split(MAGNITUDES[3].toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
@@ -198,6 +199,7 @@ object NumberUtils {
      * @param i
      * @return
      */
+    @JvmStatic
     @Untested
     fun convertIntToOrdinal(i: Int): String {
         return when (i % 100) {
@@ -227,6 +229,7 @@ object NumberUtils {
      * @param maxSize Provide to guarantee a size for the array if `fillInGaps == true`. [NO_MAX_SIZE] by default
      * @return
      */
+    @JvmStatic
     @Untested
     fun getIntFrequencies(data: IntArray, fillInGaps: Boolean = true, maxSize: Int = NO_MAX_SIZE): SparseIntArray {
         val limit = if (maxSize == NO_MAX_SIZE) data.size else maxSize
@@ -278,6 +281,7 @@ object NumberUtils {
      * @param sorted `true` if the array is sorted
      * @return most frequently occurring [Int]
      */
+    @JvmStatic
     @Untested
     fun getHighestIntFrequency(
         data: SparseIntArray,
@@ -306,6 +310,7 @@ object NumberUtils {
      * @param limit index at which to stop iterating
      * @return first index at which the key is 0 or greater. If there is no such key, then returns `-1`
      */
+    @JvmStatic
     @Untested
     private fun getStartingPositiveIndex(data: SparseIntArray, limit: Int): Int {
         var limit = limit

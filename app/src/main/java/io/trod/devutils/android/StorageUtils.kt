@@ -41,6 +41,7 @@ object StorageUtils {
          * @return [String] representing the filepath of the stored file, which can safely be used in Glide
          * @throws IOException
          */
+        @JvmStatic
         @Throws(IOException::class)
         fun saveBitmapToInternalStorage(bitmap: Bitmap, filename: String, context: Context): String {
             val cw = ContextWrapper(context)
@@ -66,6 +67,7 @@ object StorageUtils {
          * @param filename
          * @return
          */
+        @JvmStatic
         @Throws(IOException::class)
         fun getBitmapSavingFilePath(context: Context, filename: String): File {
             var filename = filename
@@ -82,6 +84,7 @@ object StorageUtils {
          *
          * @param context used to access the app's file directory
          */
+        @JvmStatic
         fun deleteBitmapDirectory(context: Context) {
             val directory = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
             if (directory != null) {
@@ -97,6 +100,7 @@ object StorageUtils {
          * @param uriToDelete
          * @return `true` if the file is successfully deleted, false otherwise
          */
+        @JvmStatic
         fun deleteBitmapFromInternalStorage(uriToDelete: Uri, tag: String): Boolean {
             val file = File(uriToDelete.path)
             val success = file.delete()
@@ -120,6 +124,7 @@ object StorageUtils {
          * @param uri obtained through `Intent.ACTION_PICK`
          * @return path of the cached copy of the original file
          */
+        @JvmStatic
         fun getImagePathFromInputStreamUri(context: Context, uri: Uri, filename: String = "tempFile.jpg"): String? {
             var inputStream: InputStream? = null
             var filePath: String? = null
@@ -173,6 +178,7 @@ object StorageUtils {
      * @param dst
      * @throws IOException
      */
+    @JvmStatic
     @Throws(IOException::class)
     fun copyFile(src: File, dst: File) {
         FileInputStream(src).use { `in` ->
@@ -248,6 +254,7 @@ object StorageUtils {
      * @param path (e.g. `/storage/emulated/0/Android/data/`)
      * @return the uri
      */
+    @JvmStatic
     fun getUriFromPath(path: String): Uri {
         return Uri.fromFile(File(path))
     }

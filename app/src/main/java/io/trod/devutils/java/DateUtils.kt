@@ -40,6 +40,7 @@ object DateUtils {
      * Formats a date to output in the form `[DOW, ][MONTH] [DAY][, YEAR] `. If formats are not provided, will just
      * return the day of the month
      */
+    @JvmStatic
     @Untested
     fun formatDate(
         date: DateTime,
@@ -77,6 +78,7 @@ object DateUtils {
      * Formats a date to output in the form `[DOW, ][MONTH] [DAY][, YEAR] `. If formats are not provided, will just
      * return the day of the month
      */
+    @JvmStatic
     @Untested
     fun formatDate(
         date: Long,
@@ -94,6 +96,7 @@ object DateUtils {
      * @param timeInMillis
      * @return
      */
+    @JvmStatic
     fun getDateTimeStartOfDay(timeInMillis: Long): DateTime {
         return DateTime(timeInMillis).withTimeAtStartOfDay()
     }
@@ -105,6 +108,7 @@ object DateUtils {
      * @param timeInMillis
      * @return
      */
+    @JvmStatic
     fun getTimeInMillisStartOfDay(timeInMillis: Long): Long {
         return DateTime(timeInMillis).withTimeAtStartOfDay().millis
     }
@@ -116,6 +120,7 @@ object DateUtils {
      * @param end
      * @return
      */
+    @JvmStatic
     fun getNumDaysBetweenDates(start: DateTime, end: DateTime): Int {
         return Days.daysBetween(start, end).days
     }
@@ -131,6 +136,7 @@ object DateUtils {
      * @param dateInMillis2
      * @return
      */
+    @JvmStatic
     fun getNumDaysBetweenDates(dateInMillis1: Long, dateInMillis2: Long): Int {
         val current = getDateTimeStartOfDay(dateInMillis1)
         val compared = getDateTimeStartOfDay(dateInMillis2)
@@ -145,6 +151,7 @@ object DateUtils {
      * @param plusDays
      * @return
      */
+    @JvmStatic
     private fun getDateAfterNumDays(currentDateTimeStartOfDay: DateTime, plusDays: Int): Long {
         return currentDateTimeStartOfDay.plusDays(plusDays).millis
     }
@@ -156,6 +163,7 @@ object DateUtils {
      * @param secondDateInMillis
      * @return
      */
+    @JvmStatic
     fun compareTwoDates(firstDateInMillis: Long, secondDateInMillis: Long): Boolean {
         return firstDateInMillis >= secondDateInMillis
     }
@@ -167,6 +175,7 @@ object DateUtils {
      * @param plusDays
      * @return
      */
+    @JvmStatic
     fun getDateAfterNumDays(baseDateStartOfDay: Long, plusDays: Int): Long {
         return getDateAfterNumDays(DateTime(baseDateStartOfDay), plusDays)
     }
@@ -178,6 +187,7 @@ object DateUtils {
      * @return
      * @throws IllegalArgumentException failed to parse `dateString`
      */
+    @JvmStatic
     @Throws(IllegalArgumentException::class)
     fun parseDateFromString(dateString: String): DateTime {
         var dateString = dateString
@@ -332,6 +342,7 @@ object DateUtils {
      * the `dow`
      * @return
      */
+    @JvmStatic
     fun getFirstDayOfWeekDateFromStartDate(dow: Int, startDate: Long): DateTime {
         val start = DateTime(startDate).withTimeAtStartOfDay()
         val startDow = start.dayOfWeek

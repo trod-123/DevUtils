@@ -29,6 +29,7 @@ object StringUtils {
      * @param input [String] to be converted to Title Case
      * @return [String] converted to Title Case
      */
+    @JvmStatic
     fun toTitleCase(input: String): String {
         val titleCase = StringBuilder()
         var nextTitleCase = true

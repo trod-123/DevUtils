@@ -28,6 +28,7 @@ object JavaUtils {
      * @param objects
      * @return
      */
+    @JvmStatic
     fun getRandomObjectFromArray(objects: Array<Any>): Any {
         return objects[Random().nextInt(objects.size)]
     }

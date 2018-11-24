@@ -29,6 +29,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresPermission
 import androidx.appcompat.widget.PopupMenu
 import com.google.android.material.snackbar.Snackbar
+import io.trod.devutils.annotations.Untested
 import io.trod.devutils.constants.Defaults
 import java.io.IOException
 import java.util.*
@@ -46,6 +47,7 @@ object UiUtils {
          * @param editTexts
          * @return
          */
+        @JvmStatic
         fun getStringsFromEditTexts(editTexts: List<EditText>): List<String> {
             val values = ArrayList<String>()
             for (editText in editTexts) {
@@ -62,6 +64,7 @@ object UiUtils {
      *
      * @return true if device is in LTR layout
      */
+    @JvmStatic
     fun isLeftToRightLayout(): Boolean {
         return TextUtils.getLayoutDirectionFromLocale(Locale.getDefault()) == View.LAYOUT_DIRECTION_LTR
     }
@@ -72,6 +75,7 @@ object UiUtils {
      * @param context with which to display the toast message
      * @param message to be displayed
      */
+    @JvmStatic
     fun showToast(context: Context, message: String) {
         if (this::toast.isInitialized) toast.cancel()
         toast = Toast.makeText(context, message, Defaults.DEFAULT_TOAST_LENGTH)
@@ -81,6 +85,7 @@ object UiUtils {
     /**
      * Display Snackbars, ensuring they do not overlap with each other if the message is the same
      */
+    @JvmStatic
     fun showSnackbar(
         view: View, message: String, shownLength: Int = Defaults.DEFAULT_SNACKBAR_LENGTH,
         actionMessage: CharSequence? = null, actionListener: View.OnClickListener? = null,
@@ -108,6 +113,7 @@ object UiUtils {
      * @param context used to access the system's vibrator service
      * @param duration in milliseconds to vibrate device
      */
+    @JvmStatic
     @RequiresPermission(android.Manifest.permission.VIBRATE)
     fun vibrate(context: Context, duration: Long) {
         val vb: Vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
@@ -117,18 +123,16 @@ object UiUtils {
     /**
      * Plays a beep sound
      *
-     *
-     * Sound source: https://freesound.org/people/zerolagtime/sounds/144418/
-     *
-     *
      * https://stackoverflow.com/questions/3289038/play-audio-file-from-the-assets-directory
      *
      * @param context
      * @throws IOException
      */
+    @JvmStatic
+    @Untested
     @Throws(IOException::class)
-    fun playBeep(context: Context) {
-        val afd = context.assets.openFd("beep.mp3")
+    fun playBeep(context: Context, assetFileName: String) {
+        val afd = context.assets.openFd(assetFileName)
         val mp = MediaPlayer()
         mp.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
         afd.close()
@@ -144,6 +148,7 @@ object UiUtils {
      *
      * See more at this [Stackoverflow link](https://stackoverflow.com/questions/30417223/how-to-add-menu-button-without-action-bar)
      */
+    @JvmStatic
     fun showMenuPopup(context: Context, view: View, menuResId: Int, listener: PopupMenu.OnMenuItemClickListener) {
         val popup = PopupMenu(context, view)
         popup.setOnMenuItemClickListener(listener)
@@ -158,6 +163,7 @@ object UiUtils {
      * @param window
      * @param enable
      */
+    @JvmStatic
     fun enableTouchResponse(window: Window, enable: Boolean) {
         if (!enable) {
             window.setFlags(
@@ -176,6 +182,7 @@ object UiUtils {
      *
      * @param show true to show the view
      */
+    @JvmStatic
     fun showView(
         view: View, show: Boolean, isButton: Boolean,
         animate: Boolean

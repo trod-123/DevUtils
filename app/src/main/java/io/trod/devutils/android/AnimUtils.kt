@@ -21,14 +21,17 @@ package io.trod.devutils.android
  */
 object AnimUtils {
 
+    @JvmStatic
     fun decelerateInterpolator(value: Float): Float {
         return 1f - value * value
     }
 
+    @JvmStatic
     fun accelerateInterpolator(value: Float): Float {
         return (1f - value) * (1f - value)
     }
 
+    @JvmStatic
     fun linearInterpolator(value: Float): Float {
         return 1f - value
     }

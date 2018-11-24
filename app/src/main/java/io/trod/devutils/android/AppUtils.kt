@@ -35,6 +35,7 @@ object AppUtils {
      * @param context used for getting package info containing version name
      * @return [String] representing the version name
      */
+    @JvmStatic
     fun getAppVersionName(context: Context): String {
         val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
         return pInfo.versionName
@@ -45,6 +46,7 @@ object AppUtils {
      *
      * @param context used for getting package info for checking system features
      * @return true if this device has a camera */
+    @JvmStatic
     fun isCameraOnDevice(context: Context): Boolean {
         return context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
     }
@@ -58,6 +60,7 @@ object AppUtils {
      * @param permission to check. Use [Manifest.permission] to provide the string
      * @return true if permission is granted
      */
+    @JvmStatic
     fun isManifestPermissionGranted(context: Context, permission: String): Boolean {
         return context.packageManager.checkPermission(permission, context.packageName) ==
                 PackageManager.PERMISSION_GRANTED
@@ -70,6 +73,7 @@ object AppUtils {
      * @param name of the key
      * @return the key string prepended with the class name
      */
+    @JvmStatic
     fun createStaticKeyString(klass: Class<*>, name: String): String {
         return String.format("%s.%s", klass.simpleName, name)
     }
@@ -80,6 +84,7 @@ object AppUtils {
      * @param context used to access the connectivity service
      * @return true if user is connected to a network
      */
+    @JvmStatic
     @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
     fun isNetworkAvailable(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
